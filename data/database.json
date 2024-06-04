@@ -96,6 +96,17 @@
       "balance": 0,
       "createdAt": "2024-06-04T12:48:04.672Z",
       "modifiedAt": "2024-06-04T12:48:04.672Z"
+    },
+    {
+      "id": "MFWcTBSiP",
+      "uuid": "d7ea06b9-8893-46f5-9505-515b0f42a14c",
+      "firstName": "FirstName",
+      "lastName": "LastName",
+      "username": "UserName",
+      "password": "$2a$10$7FiVOejRsHR0rPm8z/YxNe2doXgdj4K2SddYE6So1SXMAIpov1C6a",
+      "balance": 0,
+      "createdAt": "2024-06-04T13:47:43.895Z",
+      "modifiedAt": "2024-06-04T13:47:43.895Z"
     }
   ],
   "contacts": [

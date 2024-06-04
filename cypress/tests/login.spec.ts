@@ -25,7 +25,7 @@ const selectorsList = {
 
   describe('Login de sucesso', () => {
     it('Deve fazer login com um usuário válido', () => {
-      cy.visit('http://localhost:3000/')
+      cy.visit('/')
       cy.get(selectorsList.userNameField).type(userData.userSucess.userName)
       cy.get(selectorsList.passwordField).type(userData.userSucess.password)
       cy.get(selectorsList.rememberMeButton).click()
@@ -36,7 +36,7 @@ const selectorsList = {
 
   describe('Tentar fazer login com credenciais inválidas', () => {
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais inválidas', () => {
-      cy.visit('http://localhost:3000/')
+      cy.visit('/')
       cy.get(selectorsList.userNameField).type(userData.userFail.userName)
       cy.get(selectorsList.passwordField).type(userData.userFail.password)
       cy.get(selectorsList.rememberMeButton).click()
@@ -47,7 +47,7 @@ const selectorsList = {
 
   describe('Registro de novo usuário com sucesso', () => {
     it('Deve registrar um novo usuário com informações válidas', () => {
-      cy.visit('http://localhost:3000/')
+      cy.visit('/')
       cy.get(selectorsList.userRegistrationButton).click()
       cy.get(selectorsList.firstNameRegistrationField).type(userData.userRegistration.firstName)
       cy.get(selectorsList.lastNameRegistrationField).type(userData.userRegistration.lastName)
@@ -61,7 +61,7 @@ const selectorsList = {
 
   describe('Tentar registrar um novo usuário com informações incompletas', () => {
     it('Deve exibir mensagens de erro ao tentar registrar um novo usuário sem preencher todas as informações obrigatórias', () => {
-      cy.visit('http://localhost:3000/')
+      cy.visit('/')
       cy.get(selectorsList.userRegistrationButton).click()
       cy.get(selectorsList.firstNameRegistrationField).click()
       cy.get(selectorsList.lastNameRegistrationField).click()
