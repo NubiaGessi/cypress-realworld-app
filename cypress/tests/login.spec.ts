@@ -1,3 +1,5 @@
+import userData from '../fixtures/userData.json'
+
 describe("RWA Tests", () => {
 
 const selectorsList = {
@@ -13,6 +15,7 @@ const selectorsList = {
   passwordRegistrationField: "[data-test='signup-password']",
   confirmPasswordRegistrationField: "[data-test='signup-confirmPassword']",
   registrationSubmitButton: "[data-test='signup-submit']",
+  blankSpacePage: '.makeStyles-root-1',
   wrongFirstNameAlert: '#firstName-helper-text',
   wrongLastNameAlert: '#lastName-helper-text',
   wrongUserNameAlert: '#username-helper-text',
@@ -23,8 +26,8 @@ const selectorsList = {
   describe('Login de sucesso', () => {
     it('Deve fazer login com um usuário válido', () => {
       cy.visit('http://localhost:3000/')
-      cy.get(selectorsList.userNameField).type('Heath93')
-      cy.get(selectorsList.passwordField).type('s3cret')
+      cy.get(selectorsList.userNameField).type(userData.userSucess.userName)
+      cy.get(selectorsList.passwordField).type(userData.userSucess.password)
       cy.get(selectorsList.rememberMeButton).click()
       cy.get(selectorsList.loginSubmitButton).click()
       cy.location('pathname').should('equal', '/')
@@ -34,8 +37,8 @@ const selectorsList = {
   describe('Tentar fazer login com credenciais inválidas', () => {
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais inválidas', () => {
       cy.visit('http://localhost:3000/')
-      cy.get(selectorsList.userNameField).type('FailUserName')
-      cy.get(selectorsList.passwordField).type('fail')
+      cy.get(selectorsList.userNameField).type(userData.userFail.userName)
+      cy.get(selectorsList.passwordField).type(userData.userFail.password)
       cy.get(selectorsList.rememberMeButton).click()
       cy.get(selectorsList.loginSubmitButton).click()
       cy.get(selectorsList.wrongCredentialAlert)
@@ -46,11 +49,11 @@ const selectorsList = {
     it('Deve registrar um novo usuário com informações válidas', () => {
       cy.visit('http://localhost:3000/')
       cy.get(selectorsList.userRegistrationButton).click()
-      cy.get(selectorsList.firstNameRegistrationField).type("FirstName")
-      cy.get(selectorsList.lastNameRegistrationField).type("LastName")
-      cy.get(selectorsList.userNameRegistrationField).type("UserName")
-      cy.get(selectorsList.passwordRegistrationField).type(1234)
-      cy.get(selectorsList.confirmPasswordRegistrationField).type(1234)
+      cy.get(selectorsList.firstNameRegistrationField).type(userData.userRegistration.firstName)
+      cy.get(selectorsList.lastNameRegistrationField).type(userData.userRegistration.lastName)
+      cy.get(selectorsList.userNameRegistrationField).type(userData.userRegistration.userName)
+      cy.get(selectorsList.passwordRegistrationField).type(userData.userRegistration.password)
+      cy.get(selectorsList.confirmPasswordRegistrationField).type(userData.userRegistration.confirmationPassword)
       cy.get(selectorsList.registrationSubmitButton).click()
       cy.location('pathname').should('equal', '/signin')
     });
@@ -65,7 +68,7 @@ const selectorsList = {
       cy.get(selectorsList.userNameRegistrationField).click()
       cy.get(selectorsList.passwordRegistrationField).click()
       cy.get(selectorsList.confirmPasswordRegistrationField).click()
-      cy.get('.makeStyles-root-1').click()
+      cy.get(selectorsList.blankSpacePage).click()
       cy.get(selectorsList.wrongFirstNameAlert)
       cy.get(selectorsList.wrongLastNameAlert)
       cy.get(selectorsList.wrongUserNameAlert)
