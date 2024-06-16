@@ -9,7 +9,6 @@ class LoginPage {
         }
 
         return selectors
-
     }
 
     accessLoginPage() {

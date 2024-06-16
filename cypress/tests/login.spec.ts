@@ -7,9 +7,12 @@ const homePage = new HomePage()
 
 describe("RWA Tests", () => {
 
+  beforeEach(() => {
+    loginPage.accessLoginPage()
+  });
+
   describe('Login de sucesso', () => {
     it('Deve fazer login com um usuário válido', () => {
-      loginPage.accessLoginPage()
       loginPage.loginWithAnyUser(userData.userSucess.userName, userData.userSucess.password)
       homePage.checkHomePage()
     })
@@ -17,7 +20,6 @@ describe("RWA Tests", () => {
 
   describe('Tentar fazer login com credenciais inválidas', () => {
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais inválidas', () => {
-      loginPage.accessLoginPage()
       loginPage.loginWithAnyUser(userData.userFail.userName, userData.userFail.password)
       loginPage. checkAccessInvalid()
     });
