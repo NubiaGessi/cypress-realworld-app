@@ -8,14 +8,16 @@ const transactionPage = new TransactionPage()
 function accountBalance() {
   return cy.get('[data-test="sidenav-user-balance"]').then(($balance) => {
       const accountBalance = parseFloat($balance.text().replace(/[^0-9.-]+/g,""));
-      return accountBalance;
+      const updatedBalance = accountBalance * 0.1;
+      return parseFloat(updatedBalance.toFixed(2));
   });
 }
 
 function setAccountBalance() {
   return cy.get('[data-test="sidenav-user-balance"]').then(($balance) => {
       const accountBalance = parseFloat($balance.text().replace(/[^0-9.-]+/g,""));
-      return accountBalance * 1.1;
+      const updatedBalance = accountBalance * 1.1;
+      return parseFloat(updatedBalance.toFixed(2));
   });
 }
 
@@ -28,8 +30,8 @@ describe("RWA Tests", () => {
 
   describe('Enviar dinheiro com saldo suficiente', () => {
     it('Deve enviar dinheiro com sucesso', () => {
-      accountBalance().then((accountBalance) => {
-        transactionPage.transationSteps('Kristian Bradtke', accountBalance, 'Transfer Test')
+      accountBalance().then((parcialBalance) => {
+        transactionPage.transationSteps('Kristian Bradtke', parcialBalance, 'Transfer Test')
       })
       transactionPage.checkSuccessTransitionAlert()
     });
