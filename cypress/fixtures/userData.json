@@ -6,5 +6,9 @@
     "userFail": {
       "userName": "FailUserName",
       "password": "fail"
+    },
+    "userNoTransaction": {
+      "userName": "UserNoTransaction",
+      "password": "1234"
     }
   }

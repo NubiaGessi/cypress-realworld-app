@@ -22,8 +22,15 @@ describe("RWA Tests", () => {
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais inválidas', () => {
       loginPage.loginWithAnyUser(userData.userFail.userName, userData.userFail.password)
       loginPage. checkAccessInvalid()
-    });
-  });
+    })
+
+    describe('Login de usuário sem transação', () => {
+      it('Deve fazer login com um usuário sem transação', () => {
+        loginPage.loginWithAnyUser(userData.userNoTransaction.userName, userData.userNoTransaction.password)
+        homePage.checkHomePage()
+      })
+    })
+  })
 })
 
   
